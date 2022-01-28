@@ -59,7 +59,7 @@ namespace Artizanalii
             app.UseRouting();
 
             app.UseCors(options => {
-                options.WithOrigins(new[] {"http://localhost:3000"}).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                options.WithOrigins(new[] {"http://localhost:3000" }).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
             });
 
             app.UseAuthorization();
