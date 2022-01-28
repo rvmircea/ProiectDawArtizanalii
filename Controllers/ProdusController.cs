@@ -116,7 +116,7 @@ namespace Artizanalii.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProdus([FromRoute] int id)
+        public IActionResult DeleteProdus(int id)
         {
             if (_produsRepository.GetProdus(id) == null)
             {

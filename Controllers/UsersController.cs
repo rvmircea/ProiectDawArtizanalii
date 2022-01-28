@@ -70,7 +70,8 @@ namespace Artizanalii.Controllers
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
+                var jwt = Request.Headers["Authorization"];
+
                 var token = _jwtService.Verify(jwt);
 
                 int userId = int.Parse(token.Issuer);
@@ -112,13 +113,17 @@ namespace Artizanalii.Controllers
 
             var jwt = _jwtService.Generate(userToLogin.Id);
 
-            Response.Cookies.Append("jwt", jwt, new CookieOptions { HttpOnly = true });
-
-            //return Ok(userToLogin);
+            //Response.Cookies.Append("jwt", jwt, new CookieOptions { HttpOnly = true });
             return Ok(new
             {
-                message = "Succes !" 
+                jwt = jwt
             });
+
+            //return Ok(userToLogin);
+            //return Ok(new
+            //{
+            //    message = "Succes !" 
+            //});
         }
 
         [HttpPost("create")]
